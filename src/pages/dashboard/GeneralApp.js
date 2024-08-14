@@ -1,15 +1,13 @@
-// import { Cat } from "phosphor-react";
-import React, { Suspense} from "react";
+// import { ChatList } from "../../data";
 
-// const Cat = lazy(() => import('../../components/Cat'))
+import Chats from "./ChatList/ChatList";
+
 
 const GeneralApp = () => {
 
   return (
     <>
-      <Suspense fallback="Loading...">
-        {/* <Cat /> */}
-      </Suspense>
+      <Chats />
     </>
   );
 };
