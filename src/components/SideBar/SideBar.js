@@ -119,7 +119,7 @@ const SideBar = () => {
         {/* Profile & Switch */}
         <Stack direction={"column"} alignItems={"center"} spacing={4}>
           {/* <Switch defaultChecked /> */}
-          <IOSSwitch onChange={handleChange} checchecked={checked} />
+          <IOSSwitch onChange={handleChange} checked={checked} />
           
           <Avatar src={faker.image.avatar()} />
         </Stack>

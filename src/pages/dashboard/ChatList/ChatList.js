@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { ArchiveBox, CircleDashed, MagnifyingGlass } from "phosphor-react";
-import { styled, useTheme } from "@mui/material/styles";
+import {  useTheme } from "@mui/material/styles";
 
 import {
   Search,
@@ -18,35 +18,9 @@ import {
 } from "../../../components/Search";
 import { faker } from "@faker-js/faker";
 import { ChatList } from "../../../data";
+import StyledBadge from "../../../components/StyleBadge/StyledBadge";
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    backgroundColor: "#44b700",
-    color: "#44b700",
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    "&::after": {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      borderRadius: "50%",
-      animation: "ripple 1.2s infinite ease-in-out",
-      border: "1px solid currentColor",
-      content: '""',
-    },
-  },
-  "@keyframes ripple": {
-    "0%": {
-      transform: "scale(.8)",
-      opacity: 1,
-    },
-    "100%": {
-      transform: "scale(2.4)",
-      opacity: 0,
-    },
-  },
-}));
+
 
 const ChatElement = ({ id, name, msg, img, time, unread, pinned, online }) => {
 
@@ -105,7 +79,7 @@ const Chats = () => {
         // height: "100%"
         width: 320,
         backgroundColor: theme.palette.mode === "light" ? "#F8FAFF" : theme.palette.background.paper,
-        boxShadow: "0 0 2px rgba(0, 0, 0, 0.25)",
+        boxShadow: "0 0 2px rgba(0, 0, 0, 0.5)",
       }}
     >
       <Stack p={3} spacing={2} sx={{ height: "100vh" }}>
