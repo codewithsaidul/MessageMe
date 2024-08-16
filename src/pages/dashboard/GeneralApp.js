@@ -16,7 +16,7 @@ const GeneralApp = () => {
         sx={{
           height: "100%",
           width: "calc(100vw - 420px)",
-          background: theme.palette.mode === "light" ? "#fff" : theme.palette.background.default,
+          background: theme.palette.mode === "light" ? "#F0F4FA" : theme.palette.background.default,
         }}
       >
         <Conversation />
