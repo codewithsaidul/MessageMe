@@ -35,7 +35,7 @@ export default slice.reducer;
 
 export function ToggleSiderbar () {
     return async () => {
-        dispatch(slice.actions.ToggleSiderbar())
+        dispatch(slice.actions.toggleSiderbar())
     }
 }
 

@@ -11,26 +11,26 @@ const Message = () => {
           switch (el.type) {
             case "divider":
               // TimeLine
-              return <TimeLine el={el} />;
+              return <TimeLine key={el.text} el={el} />;
 
             case "msg":
               switch (el.subtype) {
                 case "img":
                   // img msg
-                  return <MediaMsg el={el} />
+                  return <MediaMsg key={el.message} el={el} />
                 case "doc":
                   // doc msg
-                  return <DocMsg el={el} />;
+                  return <DocMsg key={el.message} el={el} />;
                 case "link":
                   // link msg
-                  return <LinkMsg el={el} />
+                  return <LinkMsg key={el.message} el={el} />
                 case "reply":
                   // reply msg
-                  return <ReplyMsg el={el} />
+                  return <ReplyMsg key={el.message} el={el} />
 
                 default:
                   // message
-                  return <TextMsg el={el} />
+                  return <TextMsg key={el.message} el={el} />
               }
 
             default:

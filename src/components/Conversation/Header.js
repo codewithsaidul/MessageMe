@@ -7,8 +7,14 @@ import {
 } from "phosphor-react";
 import StyledBadge from "../StyleBadge/StyledBadge";
 import { faker } from "@faker-js/faker";
+import { ToggleSiderbar } from "../../redux/slices/app";
+import { useDispatch } from "react-redux";
+
 
 const Header = () => {
+
+  const dispatch = useDispatch();
+
   return (
     <Stack
       direction="row"
@@ -17,7 +23,9 @@ const Header = () => {
       sx={{ width: "100%", height: "100%" }}
     >
       {/* User Profile & Online Status */}
-      <Stack direction="row" spacing={2}>
+      <Stack onClick={() => {
+        dispatch(ToggleSiderbar())
+      }} direction="row" spacing={2}>
         {/* User Profile */}
         <Box>
           <StyledBadge
