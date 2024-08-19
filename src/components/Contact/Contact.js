@@ -2,7 +2,7 @@ import { Avatar, Box, Button, Divider, IconButton, Stack, Typography } from '@mu
 import { useTheme } from "@mui/material/styles"
 import { Bell, CaretRight, Phone, Prohibit, Star, Trash, VideoCamera, X } from 'phosphor-react';
 import { useDispatch } from 'react-redux';
-import { ToggleSiderbar } from '../../redux/slices/app';
+import { ToggleSiderbar, UpdateSidebarType } from '../../redux/slices/app';
 import { faker } from "@faker-js/faker"
 import IOSSwitch from '../IosSwitch';
 
@@ -93,7 +93,9 @@ const Contact = () => {
                   <Stack>
                       <Stack direction="row" alignItems="center" justifyContent="space-between">
                         <Typography variant="subtitle2">Media, Links & Docs</Typography>
-                        <Button endIcon={<CaretRight />}>
+                        <Button onClick={() => {
+                          dispatch(UpdateSidebarType("SHARED"))
+                        }} endIcon={<CaretRight />}>
                           201
                         </Button>
                       </Stack>
@@ -120,7 +122,9 @@ const Contact = () => {
                         <Typography variant="subtitle2">Starred Message</Typography>
                     </Stack>
 
-                    <IconButton>
+                    <IconButton onClick={() => {
+                          dispatch(UpdateSidebarType("STARRED"))
+                        }}>
                       <CaretRight />
                     </IconButton>
                   </Stack >

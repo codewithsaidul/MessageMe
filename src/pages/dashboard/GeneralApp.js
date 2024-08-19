@@ -4,6 +4,7 @@ import Chats from "./ChatList/ChatList";
 import Conversation from "../../components/Conversation";
 import Contact from "../../components/Contact/Contact";
 import { useSelector } from "react-redux";
+import SharedMessages from "../../components/Contact/SharedMessages";
 
 const GeneralApp = () => {
 
@@ -30,7 +31,18 @@ const GeneralApp = () => {
 
       {/* Contact */}
       {
-        sidebar.open && <Contact />
+        sidebar.open && (() => {
+          switch (sidebar.type) {
+            case "CONTACT":
+              return <Contact />
+            case "SHARED":
+              return <SharedMessages />
+            case "STARRED":
+              return "<StarredMessage"
+            default:
+              return <></>;
+          }
+        }) ()
       }
     </Stack>
   );
