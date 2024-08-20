@@ -5,13 +5,29 @@ import { useDispatch } from 'react-redux';
 import { ToggleSiderbar, UpdateSidebarType } from '../../redux/slices/app';
 import { faker } from "@faker-js/faker"
 import IOSSwitch from '../IosSwitch';
+import { useState } from 'react';
+import BlockDialog from '../Conversation/Dialog/BlockDialog';
+import DeleteDialog from '../Conversation/Dialog/DeleteDialog';
 
 
 const Contact = () => {
 
   const theme = useTheme();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const [openBlock, setOpenBlock] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+
+
+  const handleCloseBlock = () => {
+    setOpenBlock(false)
+  }
+
+
+  const handleCloseDelete = () => {
+    setOpenDelete(false)
+  }
 
   return (
     <Box sx={{width: 320, height: "100vh"}}>
@@ -165,10 +181,14 @@ const Contact = () => {
                     </Stack>
 
                     <Stack direction={"row"} alignItems="center" spacing={2}>
-                      <Button startIcon={ <Prohibit /> } fullWidth variant="outlined">
+                      <Button onClick={() => {
+                        setOpenBlock(true)
+                      }} startIcon={ <Prohibit /> } fullWidth variant="outlined">
                         Blocking
                       </Button>
-                      <Button startIcon={ <Trash /> } fullWidth variant="outlined">
+                      <Button onClick={() => {
+                        setOpenDelete(true)
+                      }} startIcon={ <Trash /> } fullWidth variant="outlined">
                         Delete
                       </Button>
                     </Stack>
@@ -176,6 +196,9 @@ const Contact = () => {
 
             </Stack>
         </Stack>
+
+      { openBlock && <BlockDialog open={openBlock} handleClose={handleCloseBlock} />}
+      { openDelete && <DeleteDialog open={openDelete} handleClose={handleCloseDelete} />}
     </Box>
   )
 }
