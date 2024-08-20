@@ -13,7 +13,9 @@ import { DotsThreeVertical, DownloadSimple, Image } from "phosphor-react";
 import { Message_options } from "../../data";
 import { useState } from "react";
 
-const MessageOption = () => {
+const MessageOption = ( ) => {
+
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -51,7 +53,7 @@ const MessageOption = () => {
   );
 };
 
-const TextMsg = ({ el }) => {
+const TextMsg = ({ el, menu }) => {
   const theme = useTheme();
 
   return (
@@ -77,12 +79,12 @@ const TextMsg = ({ el }) => {
         </Typography>
       </Box>
       {/* Three Dot Menu */}
-      <MessageOption />
+      { menu && <MessageOption />}
     </Stack>
   );
 };
 
-const DocMsg = ({ el }) => {
+const DocMsg = ({ el, menu }) => {
   const theme = useTheme();
 
   return (
@@ -121,12 +123,12 @@ const DocMsg = ({ el }) => {
         </Stack>
       </Box>
       {/* Three Dot Menu */}
-      <MessageOption />
+      { menu && <MessageOption />}
     </Stack>
   );
 };
 
-const LinkMsg = ({ el }) => {
+const LinkMsg = ({ el, menu }) => {
   const theme = useTheme();
 
   return (
@@ -175,12 +177,12 @@ const LinkMsg = ({ el }) => {
         </Stack>
       </Box>
       {/* Three Dot Menu */}
-      <MessageOption />
+      { menu && <MessageOption />}
     </Stack>
   );
 };
 
-const ReplyMsg = ({ el }) => {
+const ReplyMsg = ({ el, menu }) => {
   const theme = useTheme();
 
   return (
@@ -220,12 +222,12 @@ const ReplyMsg = ({ el }) => {
         </Stack>
       </Box>
       {/* Three Dot Menu */}
-      <MessageOption />
+      { menu && <MessageOption />}
     </Stack>
   );
 };
 
-const MediaMsg = ({ el }) => {
+const MediaMsg = ({ el, menu }) => {
   const theme = useTheme();
 
   return (
@@ -256,12 +258,12 @@ const MediaMsg = ({ el }) => {
         </Stack>
       </Box>
       {/* Three Dot Menu */}
-      <MessageOption />
+      { menu && <MessageOption />}
     </Stack>
   );
 };
 
-const TimeLine = ({ el }) => {
+const TimeLine = ({ el, menu }) => {
   const theme = useTheme();
 
   return (

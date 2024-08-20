@@ -1,23 +1,20 @@
-import { Box, IconButton, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
 import { UpdateSidebarType } from "../../redux/slices/app";
 import { CaretLeft } from "phosphor-react";
-import { useState } from "react";
-import Media from "../SharedMessage/Media";
-import { Shared_Links, Shared_Docs } from "../../data";
-import { DocMsg, LinkMsg } from "../Conversation/MsgTypes";
+import Message from "../Conversation/Message";
 
-const SharedMessages = () => {
+
+
+
+
+
+const StarredMessages = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
-  const [value, setValue] = useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    console.log(newValue)
-  };
 
   return (
     <Box sx={{ width: 320, height: "100vh" }}>
@@ -47,17 +44,9 @@ const SharedMessages = () => {
             >
               <CaretLeft />
             </IconButton>
-            <Typography variant="subtitle2">Shared Messages</Typography>
+            <Typography variant="subtitle2">Starred Messages</Typography>
           </Stack>
         </Box>
-
-
-        {/* Tabs */}
-          <Tabs sx={{px: 2, pt: 2}} value={value} onChange={handleChange} centered>
-            <Tab label="Media" />
-            <Tab label="Links" />
-            <Tab label="Docs" />
-          </Tabs>
 
 
         {/* Body */}
@@ -70,26 +59,13 @@ const SharedMessages = () => {
               overflowY: "scroll",
             }}
             p={3}
-            spacing={ value === 1 ? 1 : 3}
+            spacing={3}
           >
-            {
-                (() => {
-                    switch (value) {
-                        case 0:
-                            return <Media />
-                        case 1:
-                            return Shared_Links.map((el) => <LinkMsg el={el} />);
-                        case 2:
-                            return Shared_Docs.map((el) => <DocMsg el={el} />)
-                        default:
-                            return <></>;
-                    }
-                })()
-            }
+            <Message />
           </Stack>
       </Stack>
     </Box>
   );
 };
 
-export default SharedMessages;
+export default StarredMessages;

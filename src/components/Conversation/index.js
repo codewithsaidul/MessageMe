@@ -28,10 +28,10 @@ const Conversation = () => {
       {/* Messages */}
       <Box width="100%"  sx={{ flexGrow: 1, overflow: "auto", // Enable scrolling
             "&::-webkit-scrollbar": { display: "none" }, // Hide scrollbar for WebKit browsers
-            "-ms-overflow-style": "none", // Hide scrollbar for Internet Explorer and Edge
+            // "-ms-overflow-style": "none", // Hide scrollbar for Internet Explorer and Edge
             "scrollbar-width": "none",
             height: "100%", }}>
-        <Message />
+        <Message menu={true} />
       </Box>
       {/* Messages */}
 

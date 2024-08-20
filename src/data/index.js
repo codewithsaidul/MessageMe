@@ -191,28 +191,33 @@ const ChatList = [
 
 const Chat_History = [
   {
+    id: 1,
     type: "msg",
     message: "Hi 👋🏻, How are ya ?",
     incoming: true,
     outgoing: false,
   },
   {
+    id: 2,
     type: "divider",
     text: "Today",
   },
   {
+    id: 3,
     type: "msg",
     message: "Hi 👋 Panda, not bad, u ?",
     incoming: false,
     outgoing: true,
   },
   {
+    id: 4,
     type: "msg",
     message: "Can you send me an abstarct image?",
     incoming: false,
     outgoing: true,
   },
   {
+    id: 5,
     type: "msg",
     message: "Ya sure, sending you a pic",
     incoming: true,
@@ -220,6 +225,7 @@ const Chat_History = [
   },
 
   {
+    id: 6,
     type: "msg",
     subtype: "img",
     message: "Here You Go",
@@ -228,6 +234,7 @@ const Chat_History = [
     outgoing: false,
   },
   {
+    id: 7,
     type: "msg",
     message: "Can you please send this in file format?",
     incoming: false,
@@ -235,6 +242,7 @@ const Chat_History = [
   },
 
   {
+    id: 8,
     type: "msg",
     subtype: "doc",
     message: "Yes sure, here you go.",
@@ -242,6 +250,7 @@ const Chat_History = [
     outgoing: false,
   },
   {
+    id: 9,
     type: "msg",
     subtype: "link",
     preview: faker.image.cats(),
@@ -250,6 +259,7 @@ const Chat_History = [
     outgoing: false,
   },
   {
+    id: 10,
     type: "msg",
     subtype: "reply",
     reply: "This is a reply",
@@ -280,6 +290,107 @@ const Message_options = [
   },
 ];
 
+const Shared_Links = [
+  {
+    id: 9,
+    type: "msg",
+    subtype: "link",
+    preview: faker.image.cats(),
+    message: "Yep, I can also do that",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    id: 10,
+    type: "msg",
+    subtype: "link",
+    preview: faker.image.cats(),
+    message: "Yep, I can also do that",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    id: 11,
+    type: "msg",
+    subtype: "link",
+    preview: faker.image.cats(),
+    message: "Yep, I can also do that",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    id: 12,
+    type: "msg",
+    subtype: "link",
+    preview: faker.image.cats(),
+    message: "Yep, I can also do that",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    id: 13,
+    type: "msg",
+    subtype: "link",
+    preview: faker.image.cats(),
+    message: "Yep, I can also do that",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    id: 14,
+    type: "msg",
+    subtype: "link",
+    preview: faker.image.cats(),
+    message: "Yep, I can also do that",
+    incoming: true,
+    outgoing: false,
+  },
+];
+
+
+const Shared_Docs = [
+  {
+    id: 8,
+    type: "msg",
+    subtype: "doc",
+    message: "Yes sure, here you go.",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    id: 9,
+    type: "msg",
+    subtype: "doc",
+    message: "Yes sure, here you go.",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    id: 10,
+    type: "msg",
+    subtype: "doc",
+    message: "Yes sure, here you go.",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    id: 11,
+    type: "msg",
+    subtype: "doc",
+    message: "Yes sure, here you go.",
+    incoming: true,
+    outgoing: false,
+  },
+  {
+    id: 12,
+    type: "msg",
+    subtype: "doc",
+    message: "Yes sure, here you go.",
+    incoming: true,
+    outgoing: false,
+  },
+]
+
 export {
   Profile_Menu,
   Nav_Setting,
@@ -287,4 +398,6 @@ export {
   ChatList,
   Chat_History,
   Message_options,
+  Shared_Links,
+  Shared_Docs
 };
