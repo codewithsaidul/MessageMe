@@ -23,6 +23,7 @@ export default function Router() {
       element: <MainLayOut />,
       children: [
         { path: "login", element: <LoginPage /> },
+        { path: "register", element: <RegisterPage /> },
       ],
     },
     {
@@ -47,6 +48,7 @@ const GeneralApp = Loadable(
 
 
 const LoginPage = Loadable(lazy(() => import("../pages/auth/Login")));
+const RegisterPage = Loadable(lazy(() => import("../pages/auth/Register")));
 
 
 const Settings = Loadable(

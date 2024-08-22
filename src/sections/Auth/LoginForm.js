@@ -14,14 +14,16 @@ const LoginForm = () => {
     const [showPassword, setShowPassword] = React.useState(false);
 
     const LoginSchema = Yup.object().shape({
-      email: Yup.string().required("Email is Required").email("Email must be a Valid Email"),
-      password: Yup.string().required("Password is Required"),
-    });
+      email: Yup.string()
+      .required("Email is Required")
+      .email("Email must be a Valid Email"),
+    password: Yup.string().required("Password is Required"),
+  });
 
 
     const defaultValues = {
-      email: "demo@chitChat.com",
-      password: "demo1234"
+      email: "",
+      password: ""
     }
 
     const methods = useForm({
@@ -35,7 +37,6 @@ const LoginForm = () => {
       try {
         // submit data to backend
       } catch (error){
-          console.log(error.message);
           reset();
           setError("afterSubmit", {
             ...error,
@@ -46,7 +47,7 @@ const LoginForm = () => {
     }
 
   return (
-    <FormProvider methods={methods} onSubmit={onSubmit}>
+    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={3}>
           {!!errors.afterSubmit && <Alert severity='error'>{errors.afterSubmit.message}</Alert>}
           <RHFTextField name="email" label="Email Address" />
