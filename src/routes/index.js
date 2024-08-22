@@ -3,7 +3,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 
 // layouts
 import DashboardLayout from "../layouts/dashboard";
-
+import MainLayOut from "../layouts/main"
 // config
 import { DEFAULT_PATH } from "../config";
 import LoadingScreen from "../components/LoadingScreen";
@@ -18,6 +18,13 @@ const Loadable = (Component) => (props) => {
 
 export default function Router() {
   return useRoutes([
+    {
+      path: "/auth",
+      element: <MainLayOut />,
+      children: [
+        { path: "login", element: <LoginPage /> },
+      ],
+    },
     {
       path: "/",
       element: <DashboardLayout />,
@@ -39,9 +46,14 @@ const GeneralApp = Loadable(
 );
 
 
+const LoginPage = Loadable(lazy(() => import("../pages/auth/Login")));
+
+
 const Settings = Loadable(
   lazy(() => import("../pages/dashboard/Settings")),
 );
+
+
 
 
 
