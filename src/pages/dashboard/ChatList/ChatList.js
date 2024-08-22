@@ -1,6 +1,4 @@
 import {
-  Avatar,
-  Badge,
   Box,
   Button,
   Divider,
@@ -16,56 +14,11 @@ import {
   SearchIconWrapper,
   StyledInputBase,
 } from "../../../components/Search";
-import { faker } from "@faker-js/faker";
 import { ChatList } from "../../../data";
-import StyledBadge from "../../../components/StyleBadge/StyledBadge";
+import ChatElement from "../../../components/Chat/ChatElement";
 
 
 
-const ChatElement = ({ id, name, msg, img, time, unread, pinned, online }) => {
-
-  const theme = useTheme()
-
-  return (
-    <Box
-      sx={{
-        width: "100%",
-        // height: 60,
-        borderRadius: 1,
-        backgroundColor: theme.palette.mode === "light" ? "#fff" : theme.palette.background.default,
-      }}
-      p={1}
-    >
-      <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <Stack direction="row" spacing={2}>
-          {online ? (
-            <StyledBadge
-              overlap="circular"
-              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-              variant="dot"
-            >
-              <Avatar src={faker.image.avatar()} />
-            </StyledBadge>
-          ) : (
-            <Avatar src={faker.image.avatar()} />
-          )}
-
-          <Stack spacing={0.3}>
-            <Typography variant="subtitle2">{name}</Typography>
-            <Typography variant="caption">{msg}</Typography>
-          </Stack>
-        </Stack>
-
-        <Stack spacing={2} direction="column" alignItems="center">
-          <Typography sx={{ fontWeight: 600 }} variant="caption">
-            {time}
-          </Typography>
-          <Badge color="primary" badgeContent={unread}></Badge>
-        </Stack>
-      </Stack>
-    </Box>
-  );
-};
 
 const Chats = () => {
 
