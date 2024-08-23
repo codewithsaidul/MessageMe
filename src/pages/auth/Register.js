@@ -8,7 +8,7 @@ const Register = () => {
   return (
     <>
       <Stack spacing={2} sx={{ mb: 2, position: "relative" }}>
-        <Typography variant="h3">Get Started With Chit Chat</Typography>
+        <Typography variant="h3">Get Started With MessageMe</Typography>
 
         <Stack direction="row" spacing={0.5} alignItems="center">
           <Typography variant="body2">Already Have An Account?</Typography>

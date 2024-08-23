@@ -47,6 +47,58 @@ const Nav_Setting = [
 ];
 
 
+const MemberList = [
+  {
+    id: 0,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online: true,
+    incoming: true,
+    missed: false,
+  },
+  {
+    id: 1,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online: true,
+    incoming: false,
+    missed: true,
+  },
+  {
+    id: 2,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online: false,
+    incoming: true,
+    missed: true,
+  },
+  {
+    id: 3,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online: false,
+    incoming: false,
+    missed: false,
+  },
+  {
+    id: 4,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online: true,
+    incoming: true,
+    missed: false,
+  },
+  {
+    id: 5,
+    img: faker.image.avatar(),
+    name: faker.name.firstName(),
+    online: false,
+    incoming: false,
+    missed: false,
+  },
+]
+
+
 
 const CallList = [
   {
@@ -509,5 +561,6 @@ export {
   Chat_History,
   Message_options,
   Shared_Links,
-  Shared_Docs
+  Shared_Docs,
+  MemberList
 };

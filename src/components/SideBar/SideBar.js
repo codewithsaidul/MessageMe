@@ -6,6 +6,7 @@ import {
   Menu,
   MenuItem,
   Stack,
+  Typography,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Logo from "../../assets/Images/logo.ico";

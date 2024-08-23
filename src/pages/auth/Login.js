@@ -9,7 +9,7 @@ const Login = () => {
     <>
       <Stack spacing={2} sx={{ mb: 2, position: "relative" }}>
         <Typography variant="h3">
-          Login to Chit Chat
+          Login to MessageMe
         </Typography>
 
         <Stack direction="row" spacing={.5}>

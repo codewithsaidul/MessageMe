@@ -13,13 +13,20 @@ import {
 } from "../../components/Search";
 import { MagnifyingGlass, Plus } from "phosphor-react";
 import { useTheme } from "@mui/material/styles";
-import { CallList, ChatList } from "../../data";
-import ChatElement from "../../components/Chat/ChatElement";
-import CallLogElement from "../../components/Chat/CallLogElement";
-// import { useState } from "react";
+import { CallList } from "../../data";
+import { useState } from "react";
+import StartCall from "../../sections/main/StartCall";
+import { CallLogElement } from "../../components/Chat/CallLogElement";
 
 const Call = () => {
+
+
   const theme = useTheme();
+  const [openCall, setOpenCall] = useState(false)
+
+  const handleCallClose = () => {
+    setOpenCall(false)
+  }
 
   return (
     <>
@@ -65,9 +72,7 @@ const Call = () => {
                   Start New Conversation
                 </Typography>
                 <IconButton
-                  onClick={() => {
-                    /*setOpenDialog(true)*/
-                  }}
+                  onClick={() => setOpenCall(true)}
                 >
                   <Plus
                     size={24}
@@ -94,9 +99,6 @@ const Call = () => {
             >
               {/* Pinned Chat List */}
               <Stack spacing={2.4}>
-                <Typography variant="subtitle2" sx={{ color: "#676767" }}>
-                  Pinned
-                </Typography>
 
                 {/* Call Logs */}
                 {
@@ -110,6 +112,10 @@ const Call = () => {
         {/* Left */}
         {/* // Todo  => Reuse Conversation */}
       </Stack>
+
+      {
+        openCall && <StartCall open={openCall} handleClose={handleCallClose} />
+      }
     </>
   );
 };
