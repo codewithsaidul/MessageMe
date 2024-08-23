@@ -36,10 +36,10 @@ const ChatElement = ({ id, name, msg, img, time, unread, pinned, online }) => {
                 anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                 variant="dot"
               >
-                <Avatar src={faker.image.avatar()} />
+                <Avatar src={faker.image.avatar()} alt={faker.name.fullName()} />
               </StyledBadge>
             ) : (
-              <Avatar src={faker.image.avatar()} />
+              <Avatar src={faker.image.avatar()} alt={faker.name.fullName()} />
             )}
   
             <Stack spacing={0.3}>
