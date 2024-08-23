@@ -6,7 +6,6 @@ import {
   Menu,
   MenuItem,
   Stack,
-  Typography,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Logo from "../../assets/Images/logo.ico";
@@ -16,9 +15,33 @@ import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
 import useSettings from "../../hooks/useSettings";
 import IOSSwitch from "../IosSwitch";
+import { useNavigate } from "react-router-dom";
+
+
+
+
+
+
+const getPaths = (index) => {
+  switch (index) {
+    case 0:
+      return "/app"
+    case 1:
+      return "/group"
+    case 2:
+      return "/call"
+    case 3:
+      return "/settings"
+    default:
+      return <></>;
+  }
+}
+
+
 
 const SideBar = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const [selected, setSelected] = useState(0);
   const { onToggleMode } = useSettings();
@@ -28,11 +51,16 @@ const SideBar = () => {
   // Profile Menu
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  // Navigation Sidebar
   const handleClose = () => {
     setAnchorEl(null);
+    console.log("this is a side bar")
   };
 
   useEffect(() => {
@@ -40,6 +68,8 @@ const SideBar = () => {
     setChecked(savedState);
   }, []);
 
+
+  // Localstorage for them
   const handleChange = (event) => {
     const newCheckedState = event.target.checked;
     setChecked(newCheckedState);
@@ -100,7 +130,10 @@ const SideBar = () => {
                 </Box>
               ) : (
                 <IconButton
-                  onClick={() => setSelected(el.index)}
+                  onClick={() => {
+                    setSelected(el.index); 
+                    navigate(getPaths(el.index))
+                  }}
                   sx={{ width: "max-content" }}
                   key={el.index}
                 >
@@ -124,7 +157,10 @@ const SideBar = () => {
               </Box>
             ) : (
               <IconButton
-                onClick={() => setSelected(3)}
+                onClick={() => {
+                  setSelected(3);
+                  navigate(getPaths(3))
+                }}
                 sx={{ width: "max-content" }}
               >
                 <Gear />
