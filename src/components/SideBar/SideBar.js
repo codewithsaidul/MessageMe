@@ -38,6 +38,21 @@ const getPaths = (index) => {
 }
 
 
+const getMenuPaths = (index) => {
+  switch (index) {
+    case 0:
+      return "/profile"
+    case 1:
+      return "/settings"
+    case 2:
+      // Todo => Update Token  & Set IsAuthenticated to false
+      return "/auth/login"
+    default:
+      return <></>;
+  }
+}
+
+
 
 const SideBar = () => {
   const theme = useTheme();
@@ -57,10 +72,8 @@ const SideBar = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  // Navigation Sidebar
   const handleClose = () => {
     setAnchorEl(null);
-    console.log("this is a side bar")
   };
 
   useEffect(() => {
@@ -201,13 +214,16 @@ const SideBar = () => {
             }}
           >
             <Stack spacing={1} px={1}>
-              {Profile_Menu.map((el) => (
-                <MenuItem key={el.title} onClick={handleClose}>
+              {Profile_Menu.map((el, index) => (
+                <MenuItem key={el.title} onClick={() => {
+                  handleClose();
+                }}>
                   <Stack
                     sx={{ width: 100 }}
                     direction="row"
                     alignItems="center"
                     justifyContent="space-between"
+                    onClick={() => navigate(getMenuPaths(index))}
                   >
                     <span>{el.title}</span>
                     {el.icon}
