@@ -16,6 +16,8 @@ import { faker } from "@faker-js/faker";
 import useSettings from "../../hooks/useSettings";
 import IOSSwitch from "../IosSwitch";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux"
+import { LogOutUser } from "../../redux/slices/auth";
 
 
 
@@ -55,6 +57,9 @@ const getMenuPaths = (index) => {
 
 
 const SideBar = () => {
+
+
+  const dispatch = useDispatch()
   const theme = useTheme();
   const navigate = useNavigate();
 
@@ -223,7 +228,14 @@ const SideBar = () => {
                     direction="row"
                     alignItems="center"
                     justifyContent="space-between"
-                    onClick={() => navigate(getMenuPaths(index))}
+                    onClick={() => {
+                      if(index === 2) {
+                        dispatch(LogOutUser())
+                      } else {
+                        navigate(getMenuPaths(index))
+                      }
+                      
+                    }}
                   >
                     <span>{el.title}</span>
                     {el.icon}
