@@ -8,16 +8,18 @@ import { Stack, IconButton, InputAdornment, Button } from '@mui/material';
 // components
 import FormProvider, { RHFTextField } from '../../components/hook-form';
 import { Eye, EyeSlash } from 'phosphor-react';
-// import { useSearchParams } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { NewPassword } from '../../redux/slices/auth';
+import { useSearchParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { NewPassword } from '../../redux/slices/auth';
+
 
 // ----------------------------------------------------------------------
 
 export default function NewPasswordForm() {
-//   const dispatch = useDispatch();
-//   const [queryParameters] = useSearchParams();
+  const dispatch = useDispatch();
+  const [queryParameters] = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const VerifyCodeSchema = Yup.object().shape({
     
@@ -47,7 +49,7 @@ export default function NewPasswordForm() {
   const onSubmit = async (data) => {
     try {
     //   Send API Request
-    // dispatch(NewPassword({...data, token: queryParameters.get('token')}));
+    dispatch(NewPassword({...data, token: queryParameters.get('token')}));
     } catch (error) {
       console.error(error);
     }
@@ -79,15 +81,15 @@ export default function NewPasswordForm() {
         <RHFTextField
           name="passwordConfirm"
           label="Confirm New Password"
-          type={showPassword ? 'text' : 'password'}
+          type={showConfirmPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     edge="end"
                   >
-                    {showPassword ? <Eye /> : <EyeSlash />}
+                    {showConfirmPassword ? <Eye /> : <EyeSlash />}
                   </IconButton>
                 </InputAdornment>
               ),
