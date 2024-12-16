@@ -18,6 +18,7 @@ import IOSSwitch from "../IosSwitch";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux"
 import { LogOutUser } from "../../redux/slices/auth";
+import { ResetChatState } from "../../redux/slices/conversations";
 
 
 
@@ -230,7 +231,8 @@ const SideBar = () => {
                     justifyContent="space-between"
                     onClick={() => {
                       if(index === 2) {
-                        dispatch(LogOutUser())
+                        dispatch(ResetChatState())
+                        dispatch(LogOutUser());
                       } else {
                         navigate(getMenuPaths(index))
                       }

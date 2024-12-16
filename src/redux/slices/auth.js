@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import axios from "../../utils/axios";
+import { showSnackbar } from "./toast";
 
 const initialState = {
   isLoggedIn: false,
@@ -35,6 +36,10 @@ const slice = createSlice({
 // Reducer
 export default slice.reducer;
 
+
+
+
+
 // Log in
 
 export function LoginUser(formValues) {
@@ -61,9 +66,14 @@ export function LoginUser(formValues) {
             token: res.data.token,
           })
         );
+        dispatch(
+          showSnackbar({ severity: "success", message: res?.data?.message })
+        );
+        window.localStorage.setItem("user_id", res.data.user_id);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error?.response?.data?.message);
+        dispatch(showSnackbar({ severity: "error", message: error?.response?.data?.message }));
       });
   };
 }
@@ -72,6 +82,15 @@ export function LoginUser(formValues) {
 export function LogOutUser() {
   return async (dispatch, getState) => {
     dispatch(slice.actions.signOut());
+    dispatch(
+      showSnackbar({ severity: "success", message: "Log Out Successfull" })
+    );
+
+    // For Removing Token from localstorage
+    window.localStorage.removeItem("user_id");
+
+
+   
   };
 }
 
@@ -92,9 +111,13 @@ export function ForgotPassword(formValues) {
       )
       .then((response) => {
         console.log(response);
+        dispatch(
+          showSnackbar({ severity: "success", message: response?.data?.message })
+        );
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error?.response?.data?.message);
+        dispatch(showSnackbar({ severity: "error", message: error?.response?.data?.message }));
       });
   };
 }
@@ -122,9 +145,13 @@ export function NewPassword(formValues) {
             token: response.data.token,
           })
         );
+        dispatch(
+          showSnackbar({ severity: "success", message: response?.data?.message })
+        );
       })
       .catch((error) => {
         console.log(error.response.data.message);
+        dispatch(showSnackbar({ severity: "error", message: error?.response?.data?.message }));
       });
   };
 }
@@ -152,11 +179,15 @@ export function RegisterUser(formValues) {
           slice.actions.updateRegisterEmail({ email: formValues.email })
         );
         dispatch(
+          showSnackbar({ severity: "success", message: response?.data?.message })
+        );
+        dispatch(
           slice.actions.updateIsLoading({ isLoading: false, error: false })
         );
       })
       .catch((error) => {
         console.log(error);
+        dispatch(showSnackbar({ severity: "error", message: error?.response?.data?.message }));
         dispatch(
           slice.actions.updateIsLoading({ error: true, isLoading: false })
         );
@@ -194,13 +225,18 @@ export function VerifyEmail(formValues) {
             token: response.data.token,
           })
         );
-
         dispatch(
-          slice.actions.updateIsLoading({ isLoading: false, error: false })
+          showSnackbar({ severity: "success", message: response?.data?.message })
         );
+
+        window.localStorage.setItem("user_id", response?.data?.user_id)
+        // dispatch(
+        //   slice.actions.updateIsLoading({ isLoading: false, error: false })
+        // );
       })
       .catch((error) => {
         console.log(error);
+        dispatch(showSnackbar({ severity: "error", message: error?.response?.data?.message }));
         dispatch(
           slice.actions.updateIsLoading({ error: true, isLoading: false })
         ); 
